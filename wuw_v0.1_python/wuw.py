@@ -39,7 +39,7 @@ class WuwPanel(wx.Panel):
                                    size=(60*self.Grid,20*self.Grid))
         self.pictureBoxDisplay=wx.StaticBox(self,pos=(self.Width-self.Grid*66,self.Grid*23),
                                              size=(64*self.Grid,48*self.Grid))
-        self.tabSettings.SetTabSize((self.Grid,1.5*self.Grid))
+        #self.tabSettings.SetTabSize((self.Grid,1.5*self.Grid))
         self.tabPageCamera=wx.Panel(self.tabSettings)
         self.tabPageTokens=wx.Panel(self.tabSettings)
         self.tabPageApps=wx.Panel(self.tabSettings)
@@ -201,7 +201,7 @@ class WuwPanel(wx.Panel):
         ###事件响应
         self.Bind(wx.EVT_WINDOW_DESTROY, self.WUW_Destroy)
         self.Bind(wx.EVT_PAINT, self.WUW_Paint)
-        self.pictureBoxDisplay.Bind(wx.EVT_PAINT, self.drawLatestImage)
+        self.Bind(wx.EVT_PAINT, self.drawLatestImage)
         self.buttonMarkerAdd.Bind(wx.EVT_BUTTON, self.buttonMarkerAdd_Click)
         self.comboBoxMarkers.Bind(wx.EVT_COMBOBOX_DROPDOWN, self.comboBoxMarkers_DropDown)
         self.comboBoxMarkers.Bind(wx.EVT_COMBOBOX,self.comboBoxMarkers_SelectedIndexChanged)

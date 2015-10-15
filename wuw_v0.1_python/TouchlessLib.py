@@ -64,9 +64,9 @@ class Camera:
 
 #Image To Bitmap
 def ImageToBitmap(img):
-    img2 = wx.EmptyImage(img.size[0], img.size[1])
+    img2 = wx.Image(img.size[0], img.size[1])
     img2.SetData(img.tostring())
-    bitmap = wx.BitmapFromImage(img2)
+    bitmap = wx.Bitmap(img2)
     return bitmap
 
 
