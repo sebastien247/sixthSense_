@@ -7,8 +7,8 @@
 ** Date: 2015/02/10
 """
 
-#WUW应用
-##包括窗口建立和响应函数
+#WUW Application
+##Including window creation and response function
 
 import wx
 import threading
@@ -29,8 +29,8 @@ class WuwPanel(wx.Panel):
         self.Grid = self.Width / 100
         wx.Panel.__init__(self, parent)
 
-        ###构建界面
-        #构建TabPage构件组
+        ### IHM
+        # Build TabPage member group
         self.btnShowHide=wx.Button(self,pos=(self.Width-self.Grid*5,self.Grid),
                                  size=(3*self.Grid,3*self.Grid))
         self.btnExit=wx.Button(self,label="Exit",pos=(self.Width-self.Grid*9,self.Grid),
@@ -46,7 +46,7 @@ class WuwPanel(wx.Panel):
         self.tabSettings.AddPage(self.tabPageCamera, "Camera")
         self.tabSettings.AddPage(self.tabPageTokens, "Tokens")
         self.tabSettings.AddPage(self.tabPageApps, "Apps")
-        ##构建TabPageCamera
+        ##Build TabPageCamera
         self.comboBoxCameras=wx.ComboBox(self.tabPageCamera,value="Select A Camera",
                                        pos=(0,0), size=(25*self.Grid,2*self.Grid))
         self.lblCameraInfo=wx.StaticText(self.tabPageCamera,label="No Camera Selected",
@@ -79,7 +79,7 @@ class WuwPanel(wx.Panel):
         self.btnClear=wx.Button(self.tabPageCamera,label="CLEAR",
                               pos=(42*self.Grid,9*self.Grid),
                               size=(6*self.Grid,2*self.Grid))
-        ##构建TabPageTokens
+        ##Build TabPageTokens
         self.buttonMarkerAdd=wx.Button(self.tabPageTokens,label="New Marker",
                                      pos=(0,0),size=(10*self.Grid,2*self.Grid))
         self.comboBoxMarkers=wx.ComboBox(self.tabPageTokens,value="Edit Existing Marker",
@@ -118,7 +118,7 @@ class WuwPanel(wx.Panel):
         self.labelMarkerData=wx.TextCtrl(self.tabPageTokens,pos=(21*self.Grid,5*self.Grid),
                                        size=(37*self.Grid,8*self.Grid))
         self.labelMarkerData.SetEditable(False)
-        ##构建TabPageApps
+        ##Build TabPageApps
         self.labelDemoInstructions=wx.TextCtrl(self.tabPageApps,pos=(44*self.Grid,0),
                                              size=(16*self.Grid,16*self.Grid))
         self.labelDemoInstructions.SetEditable(False)
@@ -129,7 +129,7 @@ class WuwPanel(wx.Panel):
         self.buttonWeatherDemo=wx.Button(self.tabPageApps,label="Weather",pos=(1*self.Grid,7*self.Grid),
                                          size=(8*self.Grid,2*self.Grid))
         
-        #构建Label组
+        #Buil Label group
         self.labelM=wx.StaticText(self, label=" M", pos=(4*self.Grid,self.Grid),
                                 size=(2*self.Grid,2*self.Grid))
         self.labelN=wx.StaticText(self, label=" N", pos=(4*self.Grid,4*self.Grid),
@@ -147,7 +147,7 @@ class WuwPanel(wx.Panel):
         self.lblResult=wx.StaticText(self, label="Test", pos=(12*self.Grid,self.Grid),
                                    size=(12*self.Grid,2*self.Grid))
         
-        #构建DemoBox
+        #Build DemoBox
         self.BoxClock=wx.StaticBox(self,pos=(40*self.Grid,30*self.Grid),
                                    size=(20*self.Grid,20*self.Grid))
         self.BoxClock.threadTime=None
@@ -198,7 +198,7 @@ class WuwPanel(wx.Panel):
         self.BoxPhoto.Hide()
         self.ResetEnvironment()
 
-        ###事件响应
+        ###Incident response
         self.Bind(wx.EVT_WINDOW_DESTROY, self.WUW_Destroy)
         self.Bind(wx.EVT_PAINT, self.WUW_Paint)
         self.Bind(wx.EVT_PAINT, self.drawLatestImage)
@@ -222,7 +222,7 @@ class WuwPanel(wx.Panel):
         self.BoxClock.Bind(wx.EVT_PAINT, self.ShowTime)
         self.BoxPhoto.Bind(wx.EVT_PAINT, self.drawPhoto)
 
-    #线程——捕获某帧图像 
+    #Discussion - Capture a frame image
     class ThreadCapture(threading.Thread):
         def __init__(self, threadname, times, box, cam, panel):
             threading.Thread.__init__(self, name=threadname)
@@ -254,7 +254,7 @@ class WuwPanel(wx.Panel):
                 else:
                     self.__latestFrameTimeSegment = False
 
-    #线程——追踪标记物
+    #Thread - Track marker
     class ThreadMarker(threading.Thread):
         def __init__(self, threadname, times, mgr):
             threading.Thread.__init__(self, name=threadname)
@@ -269,7 +269,7 @@ class WuwPanel(wx.Panel):
         def stop(self):
             self.__stop = True
 
-    #线程——时间显示
+    #Thread - time display
     class ThreadTime(threading.Thread):
         def __init__(self, threadname, times, box):
             threading.Thread.__init__(self, name=threadname)
