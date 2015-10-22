@@ -22,6 +22,7 @@ from classes.PointR import PointR
 from classes.GeometricRecognizer import GeometricRecognizer
 from classes.NBestList import NBestList
 
+
 class WuwPanel(wx.Panel):
     Width = Value.WuwWidth
     Height = Value.WuwHeight
@@ -480,6 +481,31 @@ class WuwPanel(wx.Panel):
     ##Marker Helper Functions
 
     ##Marker HandSigns Functions
+
+    ##Gesture Helper Functions
+
+
+    class Point:
+        def __init__(self, a, b):
+            self.a=a
+            self.b=b
+
+        def displayPoint(self):
+            return '('+str(self.a)+';'+str(self.b)+')'
+
+        def calculateDistance(self, a, b):
+            distance = abs(
+                        (self.a.GetX() - self.b.GetX()) ** 2 + 
+                        (self.a.GetY() - self.b.GetY()) ** 2
+                        )
+            return distance
+
+        def calculateDistance(self, aX, aY, bX, bY):
+            distance = abs(
+                        (self.aX - self.bX) ** 2 + 
+                        (self.aY - self.bY) ** 2
+                        )
+            return distance
 
     ###Gesture Buttons
 
