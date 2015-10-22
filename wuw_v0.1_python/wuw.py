@@ -490,22 +490,22 @@ class WuwPanel(wx.Panel):
             self.a=a
             self.b=b
 
-        def displayPoint(self):
+        def affichage(self):
             return '('+str(self.a)+';'+str(self.b)+')'
 
-        def calculateDistance(self, a, b):
-            distance = abs(
-                        (self.a.GetX() - self.b.GetX()) ** 2 + 
-                        (self.a.GetY() - self.b.GetY()) ** 2
-                        )
-            return distance
-
-        def calculateDistance(self, aX, aY, bX, bY):
-            distance = abs(
-                        (self.aX - self.bX) ** 2 + 
-                        (self.aY - self.bY) ** 2
-                        )
-            return distance
+        def calculateDistance(self, aX, aY, bX, bY, a, b):
+            if self and aX and aY and bX and bY:
+                distance = abs(
+                            (self.aX - self.bX) ** 2 + 
+                            (self.aY - self.bY) ** 2
+                            )
+                return distance
+            elif self and a and b:
+                distance = abs(
+                (self.a.GetX() - self.b.GetX()) ** 2 + 
+                (self.a.GetY() - self.b.GetY()) ** 2
+                )
+                return distance
 
     ###Gesture Buttons
 
